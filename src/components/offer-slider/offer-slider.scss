@@ -1,0 +1,42 @@
+.offer-slider {
+  flex: 1;
+  margin-right: 57px;
+
+  >img {
+    width: 600px;
+    height: 375px;
+    margin-bottom: 39px;
+  }
+}
+
+.offer-slider__driwer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    width: 128px;
+    height: 80px;
+  }
+}
+
+.offer-slider__button {
+  width: 52px;
+  height: 52px;
+  background-color: #FFFFFF;
+  border: 1px solid #D7D9DF;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 6px;
+
+  &:first-child {
+    transform: rotate(180deg);
+  }
+
+  svg {
+    color: #48494D;
+    width: 18px;
+    height: 13px;
+
+  }
+}
