@@ -1,0 +1,50 @@
+.offer-contacts {
+  min-width: 779px;
+  padding-top: 4px;
+  display: flex;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.offer-contacts__block {
+  max-width: 274px;
+  margin-right: 74px;
+}
+
+.offer-contacts__item {
+  margin-bottom: 27px;
+
+}
+
+.offer-contacts__heading {
+  margin: 0;
+  color: #1A212F;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.offer-contacts__text {
+  display: block;
+  margin: 0;
+  margin-top: 7px;
+  color: #1A212F;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+
+  &--black {
+    margin-top: 11px;
+    color: #000000;
+  }
+
+}
+
+.offer-contacts__map {
+  padding-top: 6px;
+  min-width: 431px;
+  max-height: 276px;
+  padding-bottom: auto;
+}

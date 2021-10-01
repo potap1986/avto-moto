@@ -1,16 +1,19 @@
 import React from 'react'
 import './offer-options.scss'
-import { KEY_OPTIONS } from '../../const'
+import { KeyOptions } from '../../const'
 
 const OfferOptions = (props) => {
-  const options = Object.entries(KEY_OPTIONS);
+  const options = Object.entries(KeyOptions);
 
   return (
-    <div className="offer-options">
+    <div className="offer-options visually-hidden">
       <h2 className="visually-hidden">Характеристики</h2>
-      <ul>
+      <ul className="offer-options__list">
         {options.map(([keys, value], index) => (
-          <li key={keys + index}>
+          <li
+            className="offer-options__item"
+            key={keys + index}
+          >
             <p>{value}</p>
             <span>{props.options[keys]}</span>
           </li>

@@ -36,6 +36,8 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "6.0.1"
+    "leaflet": "1.7.1",
+    "node-sass": "6.0.1",
+    "react-leaflet": "3.2.1"
   }
 }

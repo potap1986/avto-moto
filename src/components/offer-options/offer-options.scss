@@ -1,0 +1,41 @@
+.offer-options {
+  max-width: 564px;
+}
+
+.offer-options__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.offer-options__item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 9px 0;
+  margin-bottom: 10px;
+
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #D7D9DF;
+  }
+
+  p {
+    margin: 0;
+    color: #48494D;       
+  }
+
+  span {
+    color: #000000;
+  }
+}
+

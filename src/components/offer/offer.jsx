@@ -29,7 +29,7 @@ class Offer extends Component {
         volume: "1.4 л"
       },
       sale_price: "2 300 000 ₽",
-      price: "2 400 000 ₽"
+      price: "2  400 000 ₽"
     },
     options: {
       transmission_type: "Роботизированная",
@@ -73,14 +73,14 @@ class Offer extends Component {
         </div>
         <div className="offer__body">
           <div className="offer__nav">
-            <button>Характеристики</button>
-            <button>Отзывы</button>
-            <button>Контакты</button>
+            <button className="offer__button">Характеристики</button>
+            <button className="offer__button offer__button--active">Отзывы</button>
+            <button className="offer__button">Контакты</button>
           </div>
           <OfferOptions 
             options = {this.state.options}
           />
-          <OfferRewiews 
+          <OfferRewiews
             rewiews = {this.state.rewiews}
           />
           <OfferContacts />

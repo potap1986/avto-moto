@@ -21,8 +21,16 @@ const OfferTitle = (props) => {
         <p>{sale_price}</p> 
         <span>{price}</span>
       </div>
-      <button>Оставить заявку</button>
-      <button>В кредит от 11 000 ₽</button>
+      <button 
+        className="offer-title__button offer-title__button--primary"
+      >
+        Оставить заявку
+      </button>
+      <button 
+        className="offer-title__button offer-title__button--secondary"
+      >
+        В кредит от 11 000 ₽
+      </button>
     </div>
   )
 }

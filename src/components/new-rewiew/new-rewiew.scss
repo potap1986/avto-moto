@@ -1,0 +1,47 @@
+.new-rewiew {  
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  min-height: 100vh;
+  background:rgba(0, 0, 0, 0.4);
+  color: #48494D;
+
+  h2 {    
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 34px;
+    margin: 0;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 24px;
+  }
+}
+
+.new-rewiew__wrapper {
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 698px;
+  min-height: 415px;
+  background: #E5E5E5;
+}
+
+.new-rewiew__close {
+  &::after {
+    position: fixed;
+    z-index: 200;
+    content: "+";
+    cursor: pointer;
+    transform: rotate(45deg);
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 60px;
+    color: #48494D;
+    right: 10px;
+    top: 10px;
+  }
+}

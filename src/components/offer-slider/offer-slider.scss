@@ -1,11 +1,28 @@
 .offer-slider {
   flex: 1;
   margin-right: 57px;
+  padding-top: 15px;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    z-index: 10;
+    content: "NEW MODEL";
+    top: 15px;
+    left: 0;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.07em;
+    color: #FFFFFF;
+    padding: 8.5px 27px;
+    background-color: #D12136;
+  }
 
   >img {
-    width: 600px;
-    height: 375px;
-    margin-bottom: 39px;
+    max-width: 600px;
+    margin-bottom: 35px;
   }
 }
 
@@ -15,12 +32,12 @@
   justify-content: space-between;
 
   img {
-    width: 128px;
-    height: 80px;
+    max-width: 128px;
   }
 }
 
 .offer-slider__button {
+  position: relative;
   width: 52px;
   height: 52px;
   background-color: #FFFFFF;
@@ -28,15 +45,20 @@
   border-radius: 50%;
   text-align: center;
   padding-top: 6px;
+  cursor: pointer;
 
   &:first-child {
     transform: rotate(180deg);
+    margin-right: 3px;
+  }
+
+  &:last-child {
+    margin-left: 3px;
   }
 
   svg {
     color: #48494D;
     width: 18px;
     height: 13px;
-
   }
 }

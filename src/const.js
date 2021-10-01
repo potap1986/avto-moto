@@ -1,4 +1,4 @@
-export const KEY_OPTIONS = {  
+export const KeyOptions = {  
   transmission_type: "Трансмиссия",
   power: "Мощность двигателя, л.с.",
   engine: "Тип двигателя",
@@ -7,3 +7,5 @@ export const KEY_OPTIONS = {
   torque: "Макс.крутящий момент",
   cylinders: "Количество цилиндров"
 }
+
+export const MAX_RATE = 5;

@@ -2,37 +2,33 @@
 	background-color: #F5F5F9;
 	padding-top: 30px;
 	padding-bottom: 30px;
-
 }
 
 .footer__container {
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
 	padding: 0;
 }
 
 .footer__nav {
 	margin: 0;
-	flex-grow: 1;
 }
 
 .footer__nav-list {
-	flex-direction: row;
+	display: flex;
 	list-style: none;
 	justify-content: space-between;
 	margin: 0;
-	padding: 0;
-	display: flex;
+	padding: 0 8px;
+	padding-right: 1px;
+	flex-wrap: wrap;
 }
 
 .footer__nav-item {
 	margin: 0;
+	margin-right: 5px;
+	margin-bottom: 10px;
 }
 
 .footer__nav-link {
-	display: block;
-	width: max-content;
 	text-decoration: none;
 	font-weight: 600;
 	font-size: 16px;

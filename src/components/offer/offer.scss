@@ -7,5 +7,36 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 90px;
+  margin-bottom: 91px;
+}
+
+.offer__body {
+  padding-left: 6px;
+}
+
+.offer__button {
+  cursor: pointer;
+  font: unset;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 23px;
+  background: #FFFFFF;
+  color: #48494D;
+  border: 1px solid #D7D9DF;
+  min-width: 195px;
+
+  &:hover, &:focus {
+    color: #FFFFFF;
+    background: #D12136;
+    border: none;
+  }
+
+  &--active {
+    color: #FFFFFF;
+    background: #D12136;
+    border: none;
+  }
 }

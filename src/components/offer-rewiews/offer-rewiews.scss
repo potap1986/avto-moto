@@ -1,0 +1,164 @@
+.offer-rewiews {
+  min-width: 1170px;
+  position: relative;
+}
+
+.offer-rewiews__button {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  cursor: pointer;
+  font: unset;
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 0.12em;
+  padding: 16px 18px;
+  text-transform: uppercase;
+  background: #FFFFFF;
+  color: #D12136;
+  border: 1px solid #D12136;
+
+  &:hover, &:focus {
+    color: #FFFFFF;
+    background: #D12136;
+    border: none;
+  }
+}
+
+.offer-rewiews__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+}
+
+.offer-rewiews__item {
+  position: relative;
+  color: #000000;
+  padding-bottom: 20px;
+  margin-bottom: 15px;
+
+  h3 {
+    margin: 0;
+    color: #48494D;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;    
+    margin-bottom: 14px;
+    padding-top: 8px;
+  }
+
+  h4 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 0;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+  }  
+
+  &::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.5px;
+    background-color: #000000;
+    opacity: .4;
+  }
+}
+
+.offer-rewiews__preferenses {
+  position: relative;
+  padding-left: 19px;
+  margin-bottom: 14px;
+
+  &--plus {
+    &::before {
+      position: absolute;
+      content: "+";
+      left: 0;
+      top: 0;
+      color: #D12136;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 20px;
+    }
+  }
+
+  &--minus {
+    &::before {
+      position: absolute;
+      content: "-";
+      left: 0;
+      top: 0;
+      color: #D12136;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 20px;
+    }
+
+  }
+
+}
+
+.offer-rewiews__comment {
+  margin-bottom: 20px;
+}
+
+.offer-rewiews__rating {
+  margin-bottom: 24px;
+
+  span {
+    color: #D12136;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    padding-left: 19px;
+  }
+}
+
+.offer-rewiews__star {
+  margin-right: 4px;
+
+  &--red {
+    fill: #D12136;
+  }
+
+  &--gray {
+    fill: #BDBEC2;
+    opacity: .7;
+  }
+}
+
+.offer-rewiews__other {
+
+  span {
+    display: inline-block;
+    min-width: 110px;
+    opacity: .4;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;       
+  }
+
+  a {
+    text-decoration: none;
+    color: #D12136;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px; 
+    padding-left: 19px;
+  }
+}
