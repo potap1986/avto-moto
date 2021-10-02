@@ -4,6 +4,7 @@ import './offer-title.scss'
 const OfferTitle = (props) => {
   const {title, options, sale_price, price} = props.head  
   const details = Object.entries(options);
+  
   return (
     <div className="offer-title">
       <h1>{title}</h1>

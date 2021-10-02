@@ -6,7 +6,7 @@ const OfferOptions = (props) => {
   const options = Object.entries(KeyOptions);
 
   return (
-    <div className="offer-options visually-hidden">
+    <div className={"offer-options" + props.classTab}>
       <h2 className="visually-hidden">Характеристики</h2>
       <ul className="offer-options__list">
         {options.map(([keys, value], index) => (

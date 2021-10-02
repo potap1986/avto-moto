@@ -8,4 +8,10 @@ export const KeyOptions = {
   cylinders: "Количество цилиндров"
 }
 
+export const Tabs = {
+  options: "Характаристики",
+  reviews: "Отзывы",
+  contacts: "Контакты" 
+}
+
 export const MAX_RATE = 5;

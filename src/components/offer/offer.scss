@@ -1,6 +1,5 @@
 .offer {
   margin-bottom: 140px;
-  padding: 0;
 }
 
 .offer__head {
@@ -8,10 +7,6 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 91px;
-}
-
-.offer__body {
-  padding-left: 6px;
 }
 
 .offer__button {
@@ -28,15 +23,18 @@
   border: 1px solid #D7D9DF;
   min-width: 195px;
 
-  &:hover, &:focus {
+  &:hover, 
+  &:focus {
     color: #FFFFFF;
     background: #D12136;
     border: none;
   }
 
   &--active {
+    cursor: auto;
     color: #FFFFFF;
     background: #D12136;
     border: none;
+    pointer-events: none;
   }
 }

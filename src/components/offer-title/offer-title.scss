@@ -105,7 +105,8 @@
     background: #D12136;
     border: none;
 
-    &:hover, &:focus {
+    &:hover, 
+    &:focus {
       background: #BD0C21;
     }
   }
@@ -115,7 +116,8 @@
     color: #D12136;
     border: 1px solid #D12136;
 
-    &:hover, &:focus {
+    &:hover, 
+    &:focus {
       color: #FFFFFF;
       background: #D12136;
       border: none;

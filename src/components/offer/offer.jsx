@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import './offer.scss'
 import OfferSlider from '../offer-slider/offer-slider'
 import OfferTitle from '../offer-title/offer-title'
-import OfferOptions from '../offer-options/offer-options'
-import OfferRewiews from '../offer-rewiews/offer-rewiews'
-import OfferContacts from '../offer-contacts/offer-contacts'
+import OfferTabs from '../offer-tabs/offer-tabs'
 
 class Offer extends Component {
   state = {
@@ -40,7 +38,7 @@ class Offer extends Component {
       torque: "370/4500",
       cylinders: "4"
     },
-    rewiews: [
+    reviews: [
       {
         author: "Борис Иванов",
         plus: "мощность, внешний вид",
@@ -60,7 +58,17 @@ class Offer extends Component {
     ]
   }
 
+  addReview(review) {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        reviews: prevState.reviews.push({test: 'test'})
+      }
+    })
+  }
+   
   render() {    
+  
     return (
       <div className="offer container">
         <div className="offer__head">
@@ -71,20 +79,12 @@ class Offer extends Component {
             head = {this.state.head}
           />
         </div>
-        <div className="offer__body">
-          <div className="offer__nav">
-            <button className="offer__button">Характеристики</button>
-            <button className="offer__button offer__button--active">Отзывы</button>
-            <button className="offer__button">Контакты</button>
-          </div>
-          <OfferOptions 
-            options = {this.state.options}
-          />
-          <OfferRewiews
-            rewiews = {this.state.rewiews}
-          />
-          <OfferContacts />
-        </div>
+        <OfferTabs
+          options = {this.state.options} 
+          reviews = {this.state.reviews}
+          changePopupVisibility = {this.props.changePopupVisibility}
+          addReview = {this.addReview}
+        />
       </div>
     )
   }

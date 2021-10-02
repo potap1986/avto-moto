@@ -47,6 +47,14 @@
   padding-top: 6px;
   cursor: pointer;
 
+  &:disabled {
+    cursor: auto;
+
+    svg {
+      stroke: #D7D9DF;
+    }
+  }
+
   &:first-child {
     transform: rotate(180deg);
     margin-right: 3px;
@@ -57,7 +65,7 @@
   }
 
   svg {
-    color: #48494D;
+    stroke: #48494D;
     width: 18px;
     height: 13px;
   }

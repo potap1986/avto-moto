@@ -1,10 +1,11 @@
-.offer-rewiews {
+.offer-reviews {
   min-width: 1170px;
   position: relative;
 }
 
-.offer-rewiews__button {
+.offer-reviews__button {
   position: absolute;
+  z-index: 100;
   top: 8px;
   right: 9px;
   cursor: pointer;
@@ -21,21 +22,22 @@
   color: #D12136;
   border: 1px solid #D12136;
 
-  &:hover, &:focus {
+  &:hover, 
+  &:focus {
     color: #FFFFFF;
     background: #D12136;
     border: none;
   }
 }
 
-.offer-rewiews__list {
+.offer-reviews__list {
   padding: 0;
   margin: 0;
   list-style: none;
 
 }
 
-.offer-rewiews__item {
+.offer-reviews__item {
   position: relative;
   color: #000000;
   padding-bottom: 20px;
@@ -79,7 +81,7 @@
   }
 }
 
-.offer-rewiews__preferenses {
+.offer-reviews__preferenses {
   position: relative;
   padding-left: 19px;
   margin-bottom: 14px;
@@ -113,11 +115,11 @@
 
 }
 
-.offer-rewiews__comment {
+.offer-reviews__comment {
   margin-bottom: 20px;
 }
 
-.offer-rewiews__rating {
+.offer-reviews__rating {
   margin-bottom: 24px;
 
   span {
@@ -129,7 +131,7 @@
   }
 }
 
-.offer-rewiews__star {
+.offer-reviews__star {
   margin-right: 4px;
 
   &--red {
@@ -142,7 +144,7 @@
   }
 }
 
-.offer-rewiews__other {
+.offer-reviews__other {
 
   span {
     display: inline-block;
