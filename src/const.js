@@ -1,4 +1,4 @@
-export const KeyOptions = {  
+const KeyOptions = {  
   transmission_type: "Трансмиссия",
   power: "Мощность двигателя, л.с.",
   engine: "Тип двигателя",
@@ -8,10 +8,18 @@ export const KeyOptions = {
   cylinders: "Количество цилиндров"
 }
 
-export const Tabs = {
+const Tabs = {
   options: "Характаристики",
   reviews: "Отзывы",
   contacts: "Контакты" 
 }
 
-export const MAX_RATE = 5;
+const MAX_RATE = 5;
+
+const ActionType = {
+  OPEN_POPUP: 'openPopup',
+  CLOSE_POPUP: 'closePopup',
+  SENT_REVIEW: 'sentReview'
+}
+
+export {KeyOptions, MAX_RATE, Tabs, ActionType}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import './new-review.scss'
 import { MAX_RATE } from '../../const'
-
+import ActionCreator from '../../store/actions'
+import {connect} from 'react-redux'
 class NewReview extends Component {
   state = {        
     author: "",
@@ -9,8 +10,18 @@ class NewReview extends Component {
     minus: "",
     comment: "",
     rate: 0,
-    time: "",
-    popup: true
+    time: null,
+  }
+
+  removeState() {    
+    this.setState({    
+      author: "",
+      plus: "",
+      minus: "",
+      comment: "",
+      rate: 0,
+      time: null,
+    })
   }
 
   onChangeName = (evt) => {
@@ -41,7 +52,6 @@ class NewReview extends Component {
     this.setState({
       rate: +wrapper.id 
     })
-    console.log(wrapper.id)
   }
   
   onChangeComment = (evt) => {
@@ -50,13 +60,31 @@ class NewReview extends Component {
       comment: evt.target.value 
     })
   }
+
+  addReview(evt) {
+    evt.preventDefault();
+    if ((this.state.author.trim() !== '') && (this.state.comment.trim() !== '')) {
+      const review = {
+        author: this.state.author,
+        plus: this.state.plus,
+        minus: this.state.minus,
+        comment: this.state.comment,
+        rate: this.state.rate,
+        time: new Date(),
+      };
+      this.props.onReviewAdd(review)
+      this.props.onPopupClose();
+      this.removeState()
+      this.render()
+    }
+  }
   
   render() {
     const rating = Array.apply(null, {length: MAX_RATE}).map(Number.call, Number)
 
     const escPressHandler = (evt) => {
       if (evt.key === 'Escape') {
-        this.props.changePopupVisibility(false);
+        this.props.onPopupClose();
         document.removeEventListener('keydown', escPressHandler);
       }
     }
@@ -66,17 +94,13 @@ class NewReview extends Component {
     return (
       <div className={`new-review ${this.props.visible ? '' : 'visually-hidden'}`} onClick={(evt) => {
         if (!evt.target.closest('.new-review__wrapper')) {
-          this.props.changePopupVisibility(false);
+          this.props.onPopupClose();
         }
       }}>      
         <div className="new-review__wrapper">
           <h2>Оставить отзыв</h2>
           <button 
-            onClick={(evt) => {
-              evt.preventDefault();
-              console.log(1);
-              this.props.changePopupVisibility(false);
-            }}
+            onClick={this.props.onPopupClose}
             className="new-review__close" 
             aria-label="Закрыть окно"
           >          
@@ -127,7 +151,7 @@ class NewReview extends Component {
               </div>
             </div>
 
-            <button className="new-review__button">Оставить отзыв</button>
+            <button onClick={this.addReview.bind(this)} className="new-review__button">Оставить отзыв</button>
 
           </form>
         </div>
@@ -136,4 +160,19 @@ class NewReview extends Component {
   }
 }
 
-export default NewReview
+const mapStateToProps = (state) => {
+	return {
+		visible: state.isPopupVisible
+	}
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onPopupClose: () => {
+    dispatch(ActionCreator.closePopup());
+  },
+  onReviewAdd: (review) => {
+    dispatch(ActionCreator.sentReview(review));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewReview)

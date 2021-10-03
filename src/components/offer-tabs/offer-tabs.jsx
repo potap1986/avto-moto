@@ -45,7 +45,7 @@ const OfferTabs = (props) => {
       </div>
       <div className="offer-tabs__content">
         <OfferOptions options = {props.options} classTab = " offer-tabs__item offer-tabs__item--active"/>
-        <OfferReviews reviews = {props.reviews} classTab = " offer-tabs__item" changePopupVisibility = {props.changePopupVisibility} addReview={props.addReview}/>
+        <OfferReviews reviews = {props.reviews} classTab = " offer-tabs__item" />
         <OfferContacts classTab = " offer-tabs__item" />
       </div>
     </div>

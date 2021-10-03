@@ -1,6 +1,9 @@
 import React from 'react'
 import './offer-reviews.scss'
 import { MAX_RATE } from '../../const'
+import { connect } from 'react-redux'
+import ActionCreator from '../../store/actions'
+import { formatDate } from '../../utils'
 
 const OfferReviews = (props) => {
 
@@ -11,9 +14,7 @@ const OfferReviews = (props) => {
       <h2 className="visually-hidden">Отзывы</h2>
       <button  
         className="offer-reviews__button"
-        onClick={() => {
-          props.changePopupVisibility(true);
-        }}
+        onClick={props.onPopupOpen}
       >
         Оставить отзыв
       </button>
@@ -50,7 +51,7 @@ const OfferReviews = (props) => {
               <span>Советует</span>
             </div>
             <div className="offer-reviews__other">
-              <span>{review.time}</span>
+              <span>{formatDate(review.time)}</span>
               <a href="mail.ru">Ответить</a>
             </div>
           </li>
@@ -62,4 +63,17 @@ const OfferReviews = (props) => {
   )
 }
 
-export default OfferReviews
+
+const mapStateToProps = (state) => {
+	return {
+		visible: state.isPopupVisible
+	}
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onPopupOpen: () => {
+    dispatch(ActionCreator.openPopup());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OfferReviews)
