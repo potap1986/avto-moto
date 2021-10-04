@@ -4,10 +4,17 @@ import Header from '../header/header'
 import Footer from '../footer/footer'
 import Offer from '../offer/offer';
 import NewReview from '../new-review/new-review';
+import { connect } from 'react-redux'
 
 
-const App = () => {
-    
+const App = (props) => {
+
+  React.useEffect(() => {
+    renderNewReview(props.visible)
+  }, [props.visible]);
+
+  const renderNewReview = (visible) => {return visible ? <NewReview /> : null}
+      
   return (
     <>
       <Header />
@@ -15,10 +22,16 @@ const App = () => {
         <Offer />
       </main>
       <Footer />
-
-      <NewReview />
+      {renderNewReview(props.visible)}
     </>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+	return {
+		visible: state.isPopupVisible
+	}
+};
+
+
+export default connect(mapStateToProps)(App);

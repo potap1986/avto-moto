@@ -5,11 +5,11 @@ import ActionCreator from '../../store/actions'
 import {connect} from 'react-redux'
 class NewReview extends Component {
   state = {        
-    author: "",
-    plus: "",
-    minus: "",
-    comment: "",
-    rate: 0,
+    author: localStorage.getItem('author') ? localStorage.getItem('author') : '',
+    plus: localStorage.getItem('plus') ? localStorage.getItem('plus') : '',
+    minus: localStorage.getItem('minus') ? localStorage.getItem('minus') : '',
+    comment: localStorage.getItem('comment') ? localStorage.getItem('comment') : '',
+    rate: localStorage.getItem('rate') ? localStorage.getItem('rate') : '',
     time: null,
   }
 
@@ -74,9 +74,22 @@ class NewReview extends Component {
       };
       this.props.onReviewAdd(review)
       this.props.onPopupClose();
-      this.removeState()
-      this.render()
+      this.removeState();
+      this.setLocalStorage();
     }
+  }
+
+  setLocalStorage() {
+    localStorage.setItem('author', this.state.author)
+    localStorage.setItem('plus', this.state.plus)
+    localStorage.setItem('minus', this.state.minus)
+    localStorage.setItem('comment', this.state.comment)
+    localStorage.setItem('rate', this.state.rate)
+  }
+
+  componentDidMount() {
+    this.authorInput.focus();
+    console.log(1, this.authorInput)
   }
   
   render() {
@@ -119,12 +132,12 @@ class NewReview extends Component {
                 <span>Пожалуйста, заполните поле </span>                
                 <div className="new-review__input-wrapper">
                   <label htmlFor="name" className="visually-hidden">Имя</label>
-                  <input className="new-review__input" type="text" id="mame" placeholder="Имя" onChange={this.onChangeName}/>  
+                  <input className="new-review__input" type="text" id="mame" placeholder="Имя" onChange={this.onChangeName} value={this.state.author} ref={(input) => {this.authorInput = input}}/>  
                 </div>        
                 <label htmlFor="plus" className="visually-hidden">Достоинства</label>
-                <input className="new-review__input" type="text" id="plus" placeholder="Достоинства" onChange={this.onChangePlus} />          
+                <input className="new-review__input" type="text" id="plus" placeholder="Достоинства" onChange={this.onChangePlus} value={this.state.plus}/>          
                 <label htmlFor="minus" className="visually-hidden">Недостатки</label>
-                <input className="new-review__input" type="text" id="minus" placeholder="Недостатки"  onChange={this.onChangeMinus} />
+                <input className="new-review__input" type="text" id="minus" placeholder="Недостатки"  onChange={this.onChangeMinus}  value={this.state.minus}/>
               </div>
               <div className="new-review__section">
                 <div className="new-review__rating-area">
@@ -144,7 +157,7 @@ class NewReview extends Component {
                 </div>  
                 <div className="new-review__input-wrapper"> 
                   <label htmlFor="review" className="visually-hidden">Комметарий</label>            
-                  <textarea className="new-review__input new-review__input--comment" id="review" name="review" placeholder="Комментарий"
+                  <textarea className="new-review__input new-review__input--comment" id="review" name="review" placeholder="Комментарий"  value={this.state.comment}
                     onChange={this.onChangeComment}
                   ></textarea>
                 </div>   

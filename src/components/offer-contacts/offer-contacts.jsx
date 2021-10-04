@@ -22,7 +22,7 @@ const OfferContacts = (props) => {
           </div>
           <div className="offer-contacts__item">
             <h3 className="offer-contacts__heading">E-mail</h3>
-            <a className="offer-contacts__text" href="mailto:info@avto-moto.ru?subject=Вопрос про автомобиль">info@avto-moto.ru</a>
+            <a className="offer-contacts__text" href="mailto:info@avto-moto.ru">info@avto-moto.ru</a>
           </div>
         </div>      
         <div className="offer-contacts__map">
@@ -31,6 +31,7 @@ const OfferContacts = (props) => {
         </div>
       </div>
     </div>
+    
   )
 }
 
