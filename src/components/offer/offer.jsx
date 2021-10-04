@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import './offer.scss'
 import OfferSlider from '../offer-slider/offer-slider'
 import OfferTitle from '../offer-title/offer-title'
@@ -22,6 +23,43 @@ const Offer = (props) => {
       />
     </div>
   )
+}
+
+Offer.propTypes = {
+  images: PropTypes.shape({
+    min: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    max: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  }).isRequired,
+  head: PropTypes.shape({
+		title: PropTypes.string.isRequired,
+		options: PropTypes.shape({        
+			engine: PropTypes.string.isRequired,
+			transmission: PropTypes.string.isRequired,
+			power: PropTypes.string.isRequired,
+			volume: PropTypes.string.isRequired
+		}).isRequired,
+		sale_price: PropTypes.string.isRequired,
+		price: PropTypes.string.isRequired
+  }).isRequired,
+  options: PropTypes.shape({
+		transmission_type: PropTypes.string.isRequired,
+		power: PropTypes.string.isRequired,
+		engine: PropTypes.string.isRequired,
+		type_of_drive: PropTypes.string.isRequired,
+		volume: PropTypes.string.isRequired,
+		torque: PropTypes.string.isRequired,
+		cylinders: PropTypes.string.isRequired
+  }).isRequired,
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      author: PropTypes.string.isRequired,
+      plus: PropTypes.string.isRequired,
+      minus: PropTypes.string.isRequired,
+      comment: PropTypes.string.isRequired,
+      rate: PropTypes.number.isRequired,
+      time:  PropTypes.instanceOf(Date).isRequired
+    }).isRequired
+  ).isRequired
 }
 
 const mapStateToProps = (state) => {

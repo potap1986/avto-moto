@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import './offer-reviews.scss'
 import { MAX_RATE } from '../../const'
 import { connect } from 'react-redux'
@@ -63,6 +64,21 @@ const OfferReviews = (props) => {
   )
 }
 
+OfferReviews.propTypes = {
+  classTab: PropTypes.string.isRequired,
+  visible: PropTypes.bool.isRequired,
+  onPopupOpen: PropTypes.func.isRequired,
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      author: PropTypes.string.isRequired,
+      plus: PropTypes.string.isRequired,
+      minus: PropTypes.string.isRequired,
+      comment: PropTypes.string.isRequired,
+      rate: PropTypes.number.isRequired,
+      time:  PropTypes.instanceOf(Date).isRequired
+    }).isRequired
+  ).isRequired  
+}
 
 const mapStateToProps = (state) => {
 	return {

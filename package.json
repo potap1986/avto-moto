@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "focus-trap-react": "8.8.1",
     "node-sass": "6.0.1",
     "prop-types": "15.7.2",
     "react-redux": "7.2.5",

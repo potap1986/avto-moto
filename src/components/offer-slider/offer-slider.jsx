@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import PropTypes from "prop-types";
 import './offer-slider.scss'
 
 
@@ -16,27 +17,30 @@ const OfferSlider = (props) => {
           alt={"Фото объявления " + (index + 1)}
         />
       ))}
-      <div className="offer-slider__driwer">
+      <div className="offer-slider__driver">
         <button 
           disabled={photo === 0}
           onClick={() => setPhoto(photo - 1)}
-          className="offer-slider__button" 
+          className="offer-slider__button offer-slider__button--prev" 
           aria-label="Назад">
           <svg width="55" height="55">
             <use xlinkHref="#arrow"/>
           </svg>
         </button>
-        {min.map((image, index) => (  
-          <img 
-            key={image + index}
-            src={image}
-            alt={"Переход на фото " + (index + 1)}
-          />
-        ))}
+        <div className="offer-slider__thumbnails">
+          {min.map((image, index) => (  
+            <img 
+              key={image + index}
+              src={image}
+              alt={"Переход на фото " + (index + 1)}
+            />
+          ))}
+
+        </div>
         <button 
           disabled={photo === (min.length - 1)}
           onClick={() => setPhoto(photo + 1)}
-          className="offer-slider__button"  
+          className="offer-slider__button offer-slider__button--next"  
           aria-label="Вперед">
           <svg width="55" height="55">
             <use xlinkHref="#arrow"/>
@@ -45,6 +49,13 @@ const OfferSlider = (props) => {
       </div>
     </div>
   )
+}
+
+OfferSlider.propTypes = {
+  images: PropTypes.shape({
+    min: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    max: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  }).isRequired
 }
 
 export default OfferSlider

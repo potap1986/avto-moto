@@ -30,14 +30,3 @@
     url("../fonts/opensans-bold.woff2") format("woff2"),
     url("../fonts/opensans-bold.woff") format("woff");
 }
-
-@font-face {
-  font-display: swap;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  src:
-    local("Roboto"),
-    url("../fonts/roboto-regular.woff2") format("woff2"),
-    url("../fonts/roboto-regular.woff") format("woff");
-}

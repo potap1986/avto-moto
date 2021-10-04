@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import './app.scss';
 import Header from '../header/header'
 import Footer from '../footer/footer'
@@ -13,7 +14,10 @@ const App = (props) => {
     renderNewReview(props.visible)
   }, [props.visible]);
 
-  const renderNewReview = (visible) => {return visible ? <NewReview /> : null}
+  const renderNewReview = (visible) => {
+    return visible 
+    ? <NewReview />
+    : null}
       
   return (
     <>
@@ -26,6 +30,11 @@ const App = (props) => {
     </>
   );
 }
+
+App.propTypes = {
+	visible: PropTypes.bool.isRequired
+}
+
 
 const mapStateToProps = (state) => {
 	return {

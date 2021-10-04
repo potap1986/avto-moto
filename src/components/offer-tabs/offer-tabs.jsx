@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import PropTypes from "prop-types";
 import OfferOptions from '../offer-options/offer-options'
 import OfferReviews from '../offer-reviews/offer-reviews'
 import OfferContacts from '../offer-contacts/offer-contacts'
@@ -50,6 +51,28 @@ const OfferTabs = (props) => {
       </div>
     </div>
   )
+}
+
+OfferTabs.propTypes = {
+  options: PropTypes.shape({
+		transmission_type: PropTypes.string.isRequired,
+		power: PropTypes.string.isRequired,
+		engine: PropTypes.string.isRequired,
+		type_of_drive: PropTypes.string.isRequired,
+		volume: PropTypes.string.isRequired,
+		torque: PropTypes.string.isRequired,
+		cylinders: PropTypes.string.isRequired
+  }).isRequired,
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      author: PropTypes.string.isRequired,
+      plus: PropTypes.string.isRequired,
+      minus: PropTypes.string.isRequired,
+      comment: PropTypes.string.isRequired,
+      rate: PropTypes.number.isRequired,
+      time:  PropTypes.instanceOf(Date).isRequired
+    }).isRequired
+  ).isRequired
 }
 
 export default OfferTabs

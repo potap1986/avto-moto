@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import './offer-options.scss'
 import { KeyOptions } from '../../const'
 
@@ -21,6 +22,19 @@ const OfferOptions = (props) => {
       </ul>      
     </div>
   )
+}
+
+OfferOptions.propTypes = {
+  classTab: PropTypes.string.isRequired,
+  options: PropTypes.shape({
+		transmission_type: PropTypes.string.isRequired,
+		power: PropTypes.string.isRequired,
+		engine: PropTypes.string.isRequired,
+		type_of_drive: PropTypes.string.isRequired,
+		volume: PropTypes.string.isRequired,
+		torque: PropTypes.string.isRequired,
+		cylinders: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default OfferOptions

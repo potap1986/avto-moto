@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import './offer-title.scss'
 
 const OfferTitle = (props) => {
@@ -34,6 +35,20 @@ const OfferTitle = (props) => {
       </button>
     </div>
   )
+}
+
+OfferTitle.propTypes = {
+  head: PropTypes.shape({
+		title: PropTypes.string.isRequired,
+		options: PropTypes.shape({        
+			engine: PropTypes.string.isRequired,
+			transmission: PropTypes.string.isRequired,
+			power: PropTypes.string.isRequired,
+			volume: PropTypes.string.isRequired
+		}).isRequired,
+		sale_price: PropTypes.string.isRequired,
+		price: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default OfferTitle

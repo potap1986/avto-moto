@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Suspense }  from 'react'
+import PropTypes from "prop-types";
 import './offer-contacts.scss'
-import MapContacts from '../map-contacts/map-contacts'
+const MapContacts = React.lazy(() => import('../map-contacts/map-contacts'));
 
 const OfferContacts = (props) => {
   return (
@@ -27,12 +28,17 @@ const OfferContacts = (props) => {
         </div>      
         <div className="offer-contacts__map">
           <h3 className="visually-hidden">Карта</h3>
-          <MapContacts />
+          <Suspense  fallback={<div>Загрузка...</div>}>
+            <MapContacts />
+          </Suspense>
         </div>
       </div>
     </div>
-    
   )
+}
+
+OfferContacts.propTypes = {
+  classTab: PropTypes.string.isRequired
 }
 
 export default OfferContacts
