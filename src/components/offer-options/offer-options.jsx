@@ -16,7 +16,7 @@ const OfferOptions = (props) => {
             key={keys + index}
           >
             <p>{value}</p>
-            <span>{props.options[keys]}</span>
+            <span>{props.options[keys.toLowerCase()]}</span>
           </li>
         ))}        
       </ul>      

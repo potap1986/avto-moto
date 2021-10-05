@@ -1,17 +1,17 @@
 const KeyOptions = {  
-  transmission_type: "Трансмиссия",
-  power: "Мощность двигателя, л.с.",
-  engine: "Тип двигателя",
-  type_of_drive: "Привод",
-  volume: "Объем двигателя, л",
-  torque: "Макс.крутящий момент",
-  cylinders: "Количество цилиндров"
+  TRANSMISSION_TYPE: "Трансмиссия",
+  POWER: "Мощность двигателя, л.с.",
+  ENGINE: "Тип двигателя",
+  TYPE_OF_DRIVE: "Привод",
+  VOLUME: "Объем двигателя, л",
+  TORQUE: "Макс.крутящий момент",
+  CYLINDERS: "Количество цилиндров"
 }
 
 const Tabs = {
-  options: "Характаристики",
-  reviews: "Отзывы",
-  contacts: "Контакты" 
+  OPTIONS: "Характаристики",
+  REVIEWS: "Отзывы",
+  CONTACTS: "Контакты" 
 }
 
 const MAX_RATE = 5;

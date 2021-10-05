@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from "prop-types";
 import './new-review.scss'
 import { MAX_RATE } from '../../const'
@@ -37,11 +37,13 @@ class NewReview extends Component {
   }
   
   onChangeRating = (evt) => {
-    evt.preventDefault()
-    const wrapper = evt.target.closest('.new-review__star-wrapper')
-    if (!wrapper) return;   
+    // evt.preventDefault()
+    console.log(evt);
+    if (evt.type === 'keydown' && evt.code !== 'Space') return;
+    console.log(evt.target);
+    const value = evt.target.closest('label').htmlFor.slice(-1);
     this.setState({
-      rate: +wrapper.id 
+      rate: +value 
     })
   }
   
@@ -132,16 +134,17 @@ class NewReview extends Component {
                 <div className="new-review__section">
                   <div className="new-review__rating-area">
                     <span className="new-review__rating-text">Оцените товар: </span>
-                    <div className="new-review__stars">
+                    <div className={`new-review__stars ${ this.state.rate === 0 ? 'new-review__stars--empty' : ''}`}>
                       {rating.map((item, i) => (
-                        <span className="new-review__star-wrapper" key={"new_star" + item} id={item + 1} onClick={this.onChangeRating}>
-                          <input className="visually-hidden" type="radio" name="rating" value={(item + 1)} />
-                          <label htmlFor={"star-" + (item + 1)} title={"Оценка «" + (item + 1) + "»"}>              
-                          <svg tabIndex="0" className={`new-review__star ${i < this.state.rate ? "new-review__star--red" : "new-review__star--gray"}`} width="28" height="28">
+                        <Fragment key={"new_star" + item}>
+                          <label tabIndex="0" className="new-review__star-label" htmlFor={"star-" + (item + 1)} title={"Оценка «" + (item + 1) + "»"} onClick={this.onChangeRating} onKeyDown={this.onChangeRating}>              
+                          {/* <svg className={`new-review__star ${i < this.state.rate ? "new-review__star--red" : "new-review__star--gray"}`} width="28" height="28"> */}
+                            <svg width="28" height="28">
                               <use xlinkHref="#star"></use>
                             </svg>
                           </label>
-                        </span>
+                          <input className="new-review__star" type="radio" name="rating" value={(item + 1)} id={"star-" + (item + 1)} checked={item + 1 === this.state.rate} onChange={() => {}}/>
+                        </Fragment>
                       ))}
                     </div>
                   </div>  

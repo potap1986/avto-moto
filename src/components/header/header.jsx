@@ -2,6 +2,25 @@ import React from 'react';
 import './header.scss';
 
 const Header = () => {
+  const header_links = [
+    {
+      name: "Автомобили",
+      href: "avto-moto.com"
+    },
+    {
+      name: "Контакты",
+      href: "avto-moto.com"
+    },
+    {
+      name: "Услуги",
+      href: "avto-moto.com"
+    },
+    {
+      name: "Вакансии",
+      href: "avto-moto.com"
+    }
+  ]
+
   return (
     <header className="header">
       <div className="header__container container">
@@ -16,26 +35,16 @@ const Header = () => {
         </a>
         <nav className="header__nav">
           <ul className="header__nav-list">
-            <li className="header__nav-item">
-              <a href="avto-moto.com" className="header__nav-link">
-                  Автомобили
-              </a>
-            </li>
-            <li className="header__nav-item">
-              <a href="avto-moto.com" className="header__nav-link">
-                  Контакты
-              </a>
-            </li>
-            <li className="header__nav-item">
-              <a href="avto-moto.com" className="header__nav-link">
-                  Услуги
-              </a>
-            </li>
-            <li className="header__nav-item">
-              <a href="avto-moto.com" className="header__nav-link">
-                  Вакансии
-              </a>
-            </li>
+            {header_links.map((link, index) => (
+              <li 
+                key={link.name + index}
+                className="header__nav-item"
+              >
+                <a href={link.href} className="header__nav-link">
+                    {link.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
