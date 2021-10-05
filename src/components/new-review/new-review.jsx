@@ -37,10 +37,7 @@ class NewReview extends Component {
   }
   
   onChangeRating = (evt) => {
-    // evt.preventDefault()
-    console.log(evt);
     if (evt.type === 'keydown' && evt.code !== 'Space') return;
-    console.log(evt.target);
     const value = evt.target.closest('label').htmlFor.slice(-1);
     this.setState({
       rate: +value 
