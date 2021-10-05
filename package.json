@@ -41,6 +41,7 @@
     "node-sass": "6.0.1",
     "prop-types": "15.7.2",
     "react-redux": "7.2.5",
+    "react-scrolllock": "5.0.1",
     "redux": "4.1.1",
     "redux-devtools-extension": "2.13.9",
     "redux-thunk": "2.3.0"

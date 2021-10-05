@@ -5,6 +5,7 @@ import { MAX_RATE } from '../../const'
 import ActionCreator from '../../store/actions'
 import {connect} from 'react-redux'
 import FocusTrap from 'focus-trap-react';
+import ScrollLock from 'react-scrolllock';
 class NewReview extends Component {
   state = {        
     author: localStorage.getItem('author') ? localStorage.getItem('author') : '',
@@ -52,7 +53,23 @@ class NewReview extends Component {
   }
 
   handleReviewAdd(evt) {
+    const authorInput = document.querySelector('.new-review__input-wrapper--author');
+    const commentInput = document.querySelector('.new-review__input-wrapper--comment');
+    
     evt.preventDefault();
+
+    if (this.state.author.trim() === '') {
+      authorInput.classList.add('new-review__input-wrapper--error')
+    } else {
+      authorInput.classList.remove('new-review__input-wrapper--error')
+    }
+
+    if (this.state.comment.trim() === '') {
+      commentInput.classList.add('new-review__input-wrapper--error')
+    } else {
+      commentInput.classList.remove('new-review__input-wrapper--error')
+    }
+
     if ((this.state.author.trim() !== '') && (this.state.comment.trim() !== '')) {
       const review = {
         author: this.state.author,
@@ -98,69 +115,70 @@ class NewReview extends Component {
           if (!evt.target.closest('.new-review__wrapper')) {
             this.props.onPopupClose();
           }
-        }}>      
-          <div className="new-review__wrapper">
-            <h2>Оставить отзыв</h2>
-            <button 
-              onClick={this.props.onPopupClose}
-              className="new-review__close" 
-              aria-label="Закрыть окно"
-            >          
-              <svg width="15" height="15">
-                <use xlinkHref="#close"></use>
-              </svg>
-              
-            </button>
-            <form 
-              className="new-review__form"
-              method="post"
-              action="#"
-            >
-              <div className="new-review__form-wrapper">              
-                <div className="new-review__section">
-                  <span>Пожалуйста, заполните поле </span>                
-                  <div className="new-review__input-wrapper">
-                    <label htmlFor="name" className="visually-hidden">Имя</label>
-                    <input className="new-review__input" type="text" id="mame" placeholder="Имя" onChange={this.handleNameChange} value={this.state.author} ref={(input) => {this.authorInput = input}}/>  
-                  </div>        
-                  <label htmlFor="plus" className="visually-hidden">Достоинства</label>
-                  <input className="new-review__input" type="text" id="plus" placeholder="Достоинства" onChange={this.handlePlusChange} value={this.state.plus}/>          
-                  <label htmlFor="minus" className="visually-hidden">Недостатки</label>
-                  <input className="new-review__input" type="text" id="minus" placeholder="Недостатки"  onChange={this.handleMinusChange}  value={this.state.minus}/>
+        }}>  
+          <ScrollLock>  
+            <div className="new-review__wrapper">
+              <h2>Оставить отзыв</h2>
+              <button 
+                onClick={this.props.onPopupClose}
+                className="new-review__close" 
+                aria-label="Закрыть окно"
+              >          
+                <svg width="15" height="15">
+                  <use xlinkHref="#close"></use>
+                </svg>
+                
+              </button>
+              <form 
+                className="new-review__form"
+                method="post"
+                action="#"
+              >
+                <div className="new-review__form-wrapper">              
+                  <div className="new-review__section">
+                    <div className="new-review__input-wrapper new-review__input-wrapper--author">
+                      <span className="new-review__input-error">Пожалуйста, заполните поле </span>                
+                      <label htmlFor="name" className="visually-hidden">Имя</label>
+                      <input className="new-review__input" type="text" id="mame" placeholder="Имя" onChange={this.handleNameChange} value={this.state.author} ref={(input) => {this.authorInput = input}}/>  
+                    </div>        
+                    <label htmlFor="plus" className="visually-hidden">Достоинства</label>
+                    <input className="new-review__input" type="text" id="plus" placeholder="Достоинства" onChange={this.handlePlusChange} value={this.state.plus}/>          
+                    <label htmlFor="minus" className="visually-hidden">Недостатки</label>
+                    <input className="new-review__input" type="text" id="minus" placeholder="Недостатки"  onChange={this.handleMinusChange}  value={this.state.minus}/>
+                  </div>
+                  <div className="new-review__section">
+                    <div className="new-review__rating-area">
+                      <span className="new-review__rating-text">Оцените товар: </span>
+                      <div className={`new-review__stars ${ this.state.rate === 0 ? 'new-review__stars--empty' : ''}`}>
+                        {stars.map((item, i) => (
+                          <Fragment key={"new_star" + item}>
+                            <label tabIndex="0" className="new-review__star-label" htmlFor={"star-" + (item + 1)} title={"Оценка «" + (item + 1) + "»"} onClick={this.handleRatingChange} onKeyDown={this.handleRatingChange}>              
+                              <svg width="28" height="28">
+                                <use xlinkHref="#star"></use>
+                              </svg>
+                            </label>
+                            <input className="new-review__star" type="radio" name="rating" value={(item + 1)} id={"star-" + (item + 1)} checked={item + 1 === this.state.rate} onChange={() => {}}/>
+                          </Fragment>
+                        ))}
+                      </div>
+                    </div>  
+                    <div className="new-review__input-wrapper new-review__input-wrapper--comment"> 
+                      <span className="new-review__input-error">Пожалуйста, заполните поле </span>                
+                      <label htmlFor="review" className="visually-hidden">Комметарий</label>            
+                      <textarea className="new-review__input new-review__input--comment" id="review" name="review" placeholder="Комментарий"  value={this.state.comment}
+                        onChange={this.handleCommentChange}
+                      ></textarea>
+                    </div>   
+                  </div>
                 </div>
-                <div className="new-review__section">
-                  <div className="new-review__rating-area">
-                    <span className="new-review__rating-text">Оцените товар: </span>
-                    <div className={`new-review__stars ${ this.state.rate === 0 ? 'new-review__stars--empty' : ''}`}>
-                      {stars.map((item, i) => (
-                        <Fragment key={"new_star" + item}>
-                          <label tabIndex="0" className="new-review__star-label" htmlFor={"star-" + (item + 1)} title={"Оценка «" + (item + 1) + "»"} onClick={this.handleRatingChange} onKeyDown={this.handleRatingChange}>              
-                          {/* <svg className={`new-review__star ${i < this.state.rate ? "new-review__star--red" : "new-review__star--gray"}`} width="28" height="28"> */}
-                            <svg width="28" height="28">
-                              <use xlinkHref="#star"></use>
-                            </svg>
-                          </label>
-                          <input className="new-review__star" type="radio" name="rating" value={(item + 1)} id={"star-" + (item + 1)} checked={item + 1 === this.state.rate} onChange={() => {}}/>
-                        </Fragment>
-                      ))}
-                    </div>
-                  </div>  
-                  <div className="new-review__input-wrapper"> 
-                    <label htmlFor="review" className="visually-hidden">Комметарий</label>            
-                    <textarea className="new-review__input new-review__input--comment" id="review" name="review" placeholder="Комментарий"  value={this.state.comment}
-                      onChange={this.handleCommentChange}
-                    ></textarea>
-                  </div>   
-                </div>
-              </div>
 
-              <button onClick={this.handleReviewAdd.bind(this)} className="new-review__button">Оставить отзыв</button>
+                <button onClick={this.handleReviewAdd.bind(this)} className="new-review__button">Оставить отзыв</button>
 
-            </form>
-          </div>
-        </div>
-          
-      </FocusTrap>
+              </form>
+            </div>          
+          </ScrollLock>  
+        </div>          
+      </FocusTrap>  
     )
   }
 }

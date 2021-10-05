@@ -7,7 +7,6 @@ import Offer from '../offer/offer';
 import NewReview from '../new-review/new-review';
 import { connect } from 'react-redux'
 
-
 const App = (props) => {
 
   React.useEffect(() => {

@@ -26,7 +26,7 @@
 }
 
 .offer-title__options-item {
-  opacity: 50%;
+  opacity: 0.5;
   color: #48494D;
   margin-right: 14px;
   margin-bottom: 14px;
@@ -67,7 +67,7 @@
 
   span {
     position: relative;
-    opacity: 50%;
+    opacity: 0.5;
     font-weight: normal;
     font-size: 20px;
     line-height: 27px;
@@ -80,7 +80,7 @@
       height: 1px;
       transform: rotate(-8deg);
       top: 13px;
-      opacity: 50%;
+      opacity: 0.5;
       background: #48494D;
     }
   }
