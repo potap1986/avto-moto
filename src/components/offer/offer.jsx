@@ -11,7 +11,7 @@ const Offer = (props) => {
     <div className="offer container">
       <div className="offer__head">
         <OfferSlider 
-          images = {props.images}
+          slider = {props.slider}
         />
         <OfferTitle 
           head = {props.head}
@@ -26,9 +26,9 @@ const Offer = (props) => {
 }
 
 Offer.propTypes = {
-  images: PropTypes.shape({
-    min: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    max: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  slider: PropTypes.shape({
+    slides: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    thumbnails: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   }).isRequired,
   head: PropTypes.shape({
 		title: PropTypes.string.isRequired,
@@ -64,7 +64,7 @@ Offer.propTypes = {
 
 const mapStateToProps = (state) => {
 	return {
-		images: state.images, 
+		slider: state.slider, 
     head: state.head,
     options: state.options,
     reviews: state.reviews,

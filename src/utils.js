@@ -1,19 +1,21 @@
+import { Time, TimeWords } from "./const";
+
 export const formatDate = date => {
   let diff = new Date() - date; 
 
   if (diff < 1000) { 
-    return 'прямо сейчас';
+    return TimeWords.NOW;
   }
 
-  let sec = Math.floor(diff / 1000);
+  let sec = Math.floor(diff / Time.MS_IN_SECOND);
 
   if (sec < 60) {
-    return sec + ' сек. назад';
+    return sec + TimeWords.SEC;
   }
 
-  let min = Math.floor(diff / 60000); 
+  let min = Math.floor(diff / Time.MS_IN_MINUTE); 
   if (min < 60) {
-    return min + ' мин. назад';
+    return min + TimeWords.MIN;
   }
 
   let d = date;

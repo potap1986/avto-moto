@@ -22,4 +22,16 @@ const ActionType = {
   SENT_REVIEW: 'sentReview'
 }
 
-export {KeyOptions, MAX_RATE, Tabs, ActionType}
+const Time = {
+  MS_IN_SECOND: 1000,
+  MS_IN_MINUTE: 60000,
+}
+
+const TimeWords = {
+  NOW: 'прямо сейчас',
+  SEC: ' сек. назад',
+  MIN: ' мин. назад',
+
+}
+
+export {KeyOptions, MAX_RATE, Tabs, ActionType, Time, TimeWords}

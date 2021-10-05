@@ -15,28 +15,28 @@ class NewReview extends Component {
     time: null,
   }
 
-  onChangeName = (evt) => {
+  handleNameChange = (evt) => {
     evt.preventDefault()   
     this.setState({
       author: evt.target.value 
     })
   }
 
-  onChangePlus = (evt) => {
+  handlePlusChange = (evt) => {
     evt.preventDefault()   
     this.setState({
       plus: evt.target.value 
     })
   }
   
-  onChangeMinus = (evt) => {
+  handleMinusChange = (evt) => {
     evt.preventDefault()   
     this.setState({
       minus: evt.target.value 
     })
   }
   
-  onChangeRating = (evt) => {
+  handleRatingChange = (evt) => {
     if (evt.type === 'keydown' && evt.code !== 'Space') return;
     const value = evt.target.closest('label').htmlFor.slice(-1);
     this.setState({
@@ -44,14 +44,14 @@ class NewReview extends Component {
     })
   }
   
-  onChangeComment = (evt) => {
+  handleCommentChange = (evt) => {
     evt.preventDefault()   
     this.setState({
       comment: evt.target.value 
     })
   }
 
-  addReview(evt) {
+  handleReviewAdd(evt) {
     evt.preventDefault();
     if ((this.state.author.trim() !== '') && (this.state.comment.trim() !== '')) {
       const review = {
@@ -81,7 +81,7 @@ class NewReview extends Component {
   }
   
   render() {
-    const rating = Array.apply(null, {length: MAX_RATE}).map(Number.call, Number)
+    const stars = Array.apply(null, {length: MAX_RATE}).map(Number.call, Number)
 
     const escPressHandler = (evt) => {
       if (evt.key === 'Escape') {
@@ -121,20 +121,20 @@ class NewReview extends Component {
                   <span>Пожалуйста, заполните поле </span>                
                   <div className="new-review__input-wrapper">
                     <label htmlFor="name" className="visually-hidden">Имя</label>
-                    <input className="new-review__input" type="text" id="mame" placeholder="Имя" onChange={this.onChangeName} value={this.state.author} ref={(input) => {this.authorInput = input}}/>  
+                    <input className="new-review__input" type="text" id="mame" placeholder="Имя" onChange={this.handleNameChange} value={this.state.author} ref={(input) => {this.authorInput = input}}/>  
                   </div>        
                   <label htmlFor="plus" className="visually-hidden">Достоинства</label>
-                  <input className="new-review__input" type="text" id="plus" placeholder="Достоинства" onChange={this.onChangePlus} value={this.state.plus}/>          
+                  <input className="new-review__input" type="text" id="plus" placeholder="Достоинства" onChange={this.handlePlusChange} value={this.state.plus}/>          
                   <label htmlFor="minus" className="visually-hidden">Недостатки</label>
-                  <input className="new-review__input" type="text" id="minus" placeholder="Недостатки"  onChange={this.onChangeMinus}  value={this.state.minus}/>
+                  <input className="new-review__input" type="text" id="minus" placeholder="Недостатки"  onChange={this.handleMinusChange}  value={this.state.minus}/>
                 </div>
                 <div className="new-review__section">
                   <div className="new-review__rating-area">
                     <span className="new-review__rating-text">Оцените товар: </span>
                     <div className={`new-review__stars ${ this.state.rate === 0 ? 'new-review__stars--empty' : ''}`}>
-                      {rating.map((item, i) => (
+                      {stars.map((item, i) => (
                         <Fragment key={"new_star" + item}>
-                          <label tabIndex="0" className="new-review__star-label" htmlFor={"star-" + (item + 1)} title={"Оценка «" + (item + 1) + "»"} onClick={this.onChangeRating} onKeyDown={this.onChangeRating}>              
+                          <label tabIndex="0" className="new-review__star-label" htmlFor={"star-" + (item + 1)} title={"Оценка «" + (item + 1) + "»"} onClick={this.handleRatingChange} onKeyDown={this.handleRatingChange}>              
                           {/* <svg className={`new-review__star ${i < this.state.rate ? "new-review__star--red" : "new-review__star--gray"}`} width="28" height="28"> */}
                             <svg width="28" height="28">
                               <use xlinkHref="#star"></use>
@@ -148,13 +148,13 @@ class NewReview extends Component {
                   <div className="new-review__input-wrapper"> 
                     <label htmlFor="review" className="visually-hidden">Комметарий</label>            
                     <textarea className="new-review__input new-review__input--comment" id="review" name="review" placeholder="Комментарий"  value={this.state.comment}
-                      onChange={this.onChangeComment}
+                      onChange={this.handleCommentChange}
                     ></textarea>
                   </div>   
                 </div>
               </div>
 
-              <button onClick={this.addReview.bind(this)} className="new-review__button">Оставить отзыв</button>
+              <button onClick={this.handleReviewAdd.bind(this)} className="new-review__button">Оставить отзыв</button>
 
             </form>
           </div>

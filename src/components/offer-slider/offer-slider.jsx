@@ -4,12 +4,12 @@ import './offer-slider.scss'
 
 
 const OfferSlider = (props) => {
-  const {max, min} = props.images 
+  const {slides, thumbnails} = props.slider 
   const [photo, setPhoto] = useState(0);
   
   return (
     <div className="offer-slider">
-      {max.map((image, index) => (  
+      {slides.map((image, index) => (  
         <img 
           key={image + index}
           className={index !== photo ? "visually-hidden" : null}
@@ -28,7 +28,7 @@ const OfferSlider = (props) => {
           </svg>
         </button>
         <div className="offer-slider__thumbnails">
-          {min.map((image, index) => (  
+          {thumbnails.map((image, index) => (  
             <img 
               key={image + index}
               src={image}
@@ -38,7 +38,7 @@ const OfferSlider = (props) => {
 
         </div>
         <button 
-          disabled={photo === (min.length - 1)}
+          disabled={photo === (thumbnails.length - 1)}
           onClick={() => setPhoto(photo + 1)}
           className="offer-slider__button offer-slider__button--next"  
           aria-label="Вперед">
@@ -52,9 +52,9 @@ const OfferSlider = (props) => {
 }
 
 OfferSlider.propTypes = {
-  images: PropTypes.shape({
-    min: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-    max: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  slider: PropTypes.shape({
+    thumbnails: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    slides: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   }).isRequired
 }
 

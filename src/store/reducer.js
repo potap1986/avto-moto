@@ -2,13 +2,13 @@ import {ActionType} from "../const";
 
 const initialState = {
 	isPopupVisible: false,
-	images: {
-		max: [
+	slider: {
+		slides: [
 			"../image/desktop-slide1.jpg",
 			"../image/desktop-slide2.jpg",
 			"../image/desktop-slide3.jpg"
 		],
-		min: [
+		thumbnails: [
 			"../image/nav-slide1.jpg",
 			"../image/nav-slide2.jpg",
 			"../image/nav-slide3.jpg"

@@ -2,7 +2,7 @@ import React from 'react';
 import './footer.scss';
 
 const Footer = () => {
-  const footer_links = [
+  const footerLinks = [
     {
       name: "Корпоративным клиентам",
       href: "avto-moto.com"
@@ -38,7 +38,7 @@ const Footer = () => {
       <div className="footer__container container">
         <nav className="footer__nav">
           <ul className="footer__nav-list">
-            {footer_links.map((link, index) => (
+            {footerLinks.map((link, index) => (
               <li 
                 key={link.name + index}
                 className="footer__nav-item"

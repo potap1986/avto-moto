@@ -8,7 +8,7 @@ import { formatDate } from '../../utils'
 
 const OfferReviews = (props) => {
 
-  const rating = Array.apply(null, {length: MAX_RATE}).map(Number.call, Number)
+  const stars = Array.apply(null, {length: MAX_RATE}).map(Number.call, Number)
 
   return (
     <div className={"offer-reviews" + props.classTab}>
@@ -39,7 +39,7 @@ const OfferReviews = (props) => {
               <p>{review.comment}</p>
             </div>
             <div className="offer-reviews__rating">
-              {rating.map((item) => (
+              {stars.map((item) => (
                 <svg 
                   key={review.author + item} 
                   className={"offer-reviews__star " + (item < review.rate ? "offer-reviews__star--red" : "offer-reviews__star--gray")} 

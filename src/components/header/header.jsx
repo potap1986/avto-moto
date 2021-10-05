@@ -2,7 +2,7 @@ import React from 'react';
 import './header.scss';
 
 const Header = () => {
-  const header_links = [
+  const headerLinks = [
     {
       name: "Автомобили",
       href: "avto-moto.com"
@@ -35,7 +35,7 @@ const Header = () => {
         </a>
         <nav className="header__nav">
           <ul className="header__nav-list">
-            {header_links.map((link, index) => (
+            {headerLinks.map((link, index) => (
               <li 
                 key={link.name + index}
                 className="header__nav-item"
